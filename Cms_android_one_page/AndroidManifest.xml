@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.cms"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk 
+        android:minSdkVersion="14"
+        android:targetSdkVersion="16" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.example.cms.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.cms.AddActivity"
+            android:label="@string/title_activity_add" >
+        </activity>
+        <activity
+            android:name="com.example.cms.OneActivity"
+            android:label="@string/title_activity_one" >
+        </activity>
+        <activity
+            android:name="com.example.cms.TwoActivity"
+            android:label="@string/title_activity_two" >
+        </activity>
+        <activity
+            android:name="com.example.cms.ThreeActivity"
+            android:label="@string/title_activity_three" >
+        </activity>
+        <activity
+            android:name="com.example.cms.FourActivity"
+            android:label="@string/title_activity_four" >
+        </activity>
+        <activity
+            android:name="com.example.cms.LvliActivity"
+            android:label="@string/title_activity_lvli" >
+        </activity>
+        <activity
+            android:name="com.example.cms.AddBActivity"
+            android:label="@string/title_activity_add_b" >
+        </activity>
+        <activity
+            android:name="com.example.cms.Add2Activity"
+            android:label="@string/title_activity_add2" >
+        </activity>
+        <activity
+            android:name="com.example.cms.AddPfActivity"
+            android:label="@string/title_activity_add_pf" >
+        </activity>
+    </application>
+
+
+</manifest>

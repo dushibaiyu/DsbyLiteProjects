@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string-array name="hobby">        
+     <item>断线</item>            
+     <item>跳线</item>            
+     <item>掉道</item>    
+     <item>打结回针</item>            
+     <item>毛漏</item>            
+     <item>码边不良</item> 
+     <item>线迹不良</item>            
+     <item>无倒回针</item>            
+     <item>破损</item> 
+     <item>面疵</item>            
+     <item>整烫不良</item>            
+     <item>形不良</item> 
+     <item>污渍</item>            
+     <item>色差</item>            
+     <item>印染</item> 
+     <item>刺绣</item>            
+     <item>吊牌·商标</item>            
+     <item>洗涤</item>  
+     <item>尺寸不良</item>            
+     <item>扣·铆钉</item>            
+     <item>挂钩·橡根</item> 
+     <item>水晶石</item>            
+     <item>毛須·捏折</item>            
+     <item>喷砂不良</item>    
+  </string-array>
+</resources>

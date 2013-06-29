@@ -1,0 +1,265 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".Add2Activity" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp"
+        android:text="@string/hello_world"
+        android:textSize="46dp" />
+
+    <View
+        android:id="@+id/viewqm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textView1"
+        android:background="@drawable/images" />
+
+    <GridLayout
+        android:id="@+id/gridLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/viewqm"
+        android:layout_marginTop="49dp"
+        android:columnCount="4" >
+
+        <CheckBox
+            android:id="@+id/cb1"
+            android:layout_height="74dp"
+            android:layout_column="0"
+            android:layout_gravity="left|top"
+            android:layout_row="0"
+            android:text="断线" 
+            android:textSize="24dp"/>
+
+        <CheckBox
+            android:id="@+id/cb2"
+            android:layout_height="74dp"
+            android:layout_column="1"
+            android:layout_gravity="left|top"
+            android:layout_row="0"
+            android:text="跳线" 
+            android:textSize="24dp"/>
+
+        <CheckBox
+            android:id="@+id/cb3"
+            android:layout_height="73dp"
+            android:layout_column="2"
+            android:layout_gravity="left|top"
+            android:layout_row="0"
+            android:text="掉道" 
+            android:textSize="24dp"/>
+
+        <CheckBox
+            android:id="@+id/cb4"
+            android:layout_height="72dp"
+            android:layout_column="3"
+            android:layout_gravity="left|top"
+            android:layout_row="0"
+            android:text="打结回针" 
+            android:textSize="24dp"/>
+
+        <CheckBox
+            android:id="@+id/cb5"
+            android:layout_height="80dp"
+            android:layout_column="0"
+            android:layout_gravity="left|top"
+            android:layout_row="1"
+            android:text="毛漏"
+            android:textSize="24dp" />
+
+        <CheckBox
+            android:id="@+id/cb6"
+            android:layout_height="89dp"
+            android:layout_column="1"
+            android:layout_gravity="left|top"
+            android:layout_row="1"
+            android:text="码边不良"
+            android:textSize="24dp" />
+
+        <CheckBox
+            android:id="@+id/cb9"
+            android:layout_height="74dp"
+            android:layout_column="0"
+            android:layout_gravity="left|top"
+            android:layout_row="2"
+            android:text="破损" 
+            android:textSize="24dp"/>
+
+        <CheckBox
+            android:id="@+id/cb13"
+            android:layout_height="66dp"
+            android:layout_column="0"
+            android:layout_gravity="left|top"
+            android:layout_row="3"
+            android:text="污渍" 
+            android:textSize="24dp"/>
+
+        <CheckBox
+            android:id="@+id/cb17"
+            android:layout_height="88dp"
+            android:layout_column="0"
+            android:layout_gravity="left|top"
+            android:layout_row="4"
+            android:text="吊牌·商标"
+            android:textSize="24dp" />
+
+        <CheckBox
+            android:id="@+id/cb21"
+            android:layout_height="74dp"
+            android:layout_column="0"
+            android:layout_gravity="left|top"
+            android:layout_row="5"
+            android:text="挂钩·橡根"
+            android:textSize="24dp" />
+
+        <CheckBox
+            android:id="@+id/cb7"
+            android:layout_column="2"
+            android:layout_gravity="left|center_vertical"
+            android:layout_row="1"
+            android:text="线迹不良" 
+            android:textSize="24dp"/>
+
+        <CheckBox
+            android:id="@+id/cb8"
+            android:layout_column="3"
+            android:layout_gravity="left|center_vertical"
+            android:layout_row="1"
+            android:text="无倒回针" 
+            android:textSize="24dp"/>
+
+        <CheckBox
+            android:id="@+id/cb10"
+            android:layout_column="1"
+            android:layout_gravity="left|center_vertical"
+            android:layout_row="2"
+            android:text="面疵" 
+            android:textSize="24dp"/>
+
+        <CheckBox
+            android:id="@+id/cb11"
+            android:layout_column="2"
+            android:layout_gravity="left|center_vertical"
+            android:layout_row="2"
+            android:text="整烫不良"
+            android:textSize="24dp" />
+
+        <CheckBox
+            android:id="@+id/cb12"
+            android:layout_column="3"
+            android:layout_gravity="left|center_vertical"
+            android:layout_row="2"
+            android:text="形不良" 
+            android:textSize="24dp"/>
+
+        <CheckBox
+            android:id="@+id/cb14"
+            android:layout_column="1"
+            android:layout_gravity="left|center_vertical"
+            android:layout_row="3"
+            android:text="色差" 
+            android:textSize="24dp"/>
+
+        <CheckBox
+            android:id="@+id/cb18"
+            android:layout_column="1"
+            android:layout_gravity="left|center_vertical"
+            android:layout_row="4"
+            android:text="洗涤"
+            android:textSize="24dp" />
+
+        <CheckBox
+            android:id="@+id/cb22"
+            android:layout_column="1"
+            android:layout_gravity="left|center_vertical"
+            android:layout_row="5"
+            android:text="水晶石" 
+            android:textSize="24dp"/>
+
+        <CheckBox
+            android:id="@+id/cb19"
+            android:layout_column="2"
+            android:layout_gravity="left|center_vertical"
+            android:layout_row="4"
+            android:text="尺寸不良"
+            android:textSize="24dp" />
+
+        <CheckBox
+            android:id="@+id/cb15"
+            android:layout_column="2"
+            android:layout_gravity="left|center_vertical"
+            android:layout_row="3"
+            android:text="印染" 
+            android:textSize="24dp"/>
+
+        <CheckBox
+            android:id="@+id/cb16"
+            android:layout_column="3"
+            android:layout_gravity="left|center_vertical"
+            android:layout_row="3"
+            android:text="刺绣" 
+            android:textSize="24dp"/>
+
+        <CheckBox
+            android:id="@+id/cb23"
+            android:layout_column="2"
+            android:layout_gravity="left|center_vertical"
+            android:layout_row="5"
+            android:text="毛須·捏折"
+            android:textSize="24dp" />
+
+        <CheckBox
+            android:id="@+id/cb20"
+            android:layout_column="3"
+            android:layout_gravity="left|center_vertical"
+            android:layout_row="4"
+            android:text="扣·铆钉" 
+            android:textSize="24dp"/>
+
+        <CheckBox
+            android:id="@+id/cb24"
+            android:layout_column="3"
+            android:layout_gravity="left|center_vertical"
+            android:layout_row="5"
+            android:text="喷砂不良"
+            android:textSize="24dp" />
+    </GridLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/gridLayout1"
+        android:layout_alignRight="@+id/gridLayout1"
+        android:layout_below="@+id/gridLayout1"
+        android:layout_marginTop="27dp" >
+
+        <Button
+            android:id="@+id/but_2add"
+            android:layout_width="wrap_content"
+            android:layout_height="142dp"
+            android:layout_weight="0.57"
+            android:text="@string/add"
+            android:textSize="36dp" />
+
+        <Button
+            android:id="@+id/but_2back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.49"
+            android:text="@string/back"
+            android:textSize="36dp" />
+    </LinearLayout>
+
+</RelativeLayout>
