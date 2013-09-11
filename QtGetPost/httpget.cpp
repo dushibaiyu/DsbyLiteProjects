@@ -1,43 +1,80 @@
 #include "httpget.h"
 
-HttpGet::HttpGet(Qobject * parent) : QObject(parent)
+HttpGet::HttpGet(QObject *parent) : QObject(parent)
 {
-    this->manger = new QNetworkAccessManager;
-    this->reply = new QNetworkReply;
-    this->request = new QNetworkRequest;
 }
 
-HttpGet::HttpGet(const QString & url,QString & session = "",Qobject * parent = 0): QObject(parent)
+HttpGet::HttpGet(const QString & url,QString  session,QObject * parent): QObject(parent)
 {
-    this->manger = new QNetworkAccessManager;
-    this->reply = new QNetworkReply;
-    this->request = new QNetworkRequest(url);
+    this->request.setUrl(url);
     if (session != "")
     {
-        this->request->	setHeader(QNetworkRequest::CookieHeader,session);
+        this->request.setHeader(QNetworkRequest::CookieHeader,session);
     }
 }
 
-HttpGet::~httpGet()
+HttpGet::~HttpGet()
 {
-    delete this->reply;
-    delete this->request;
-    delete this->manger;
 }
 
 void HttpGet::setUrl(const QUrl &url)
 {
-    this->request->setUrl(url);
+    this->request.setUrl(url);
 }
 
 void HttpGet::setUserAgent(const QString &userAgent)
 {
-    this->request->setHeader(QNetworkRequest::UserAgentHeader,userAgent);
+    this->request.setHeader(QNetworkRequest::UserAgentHeader,userAgent);
 }
 
 void HttpGet::setSession(QString &session)
 {
-    this->request->	setHeader(QNetworkRequest::CookieHeader,session);
+    this->request.setHeader(QNetworkRequest::CookieHeader,session);
 }
 
+QString HttpGet::httpGet()
+{
+    qDebug() << "httpGet()";
+    QString tem;
+    QNetworkAccessManager manger;
+    this->reply = manger.get(this->request);
+    connect(reply, &QNetworkReply::finished, [=](){QString temp(reply->readAll()); tem = temp;});
+    reply->deleteLater();
+    return tem;
+}
+
+QString HttpGet::httpGet(const QUrl & url,QString  session)
+{
+    qDebug() << "httpGet(const QUrl & url,QString  session)";
+    this->request.setUrl(url);
+    if (session != "")
+    {
+        this->request.setHeader(QNetworkRequest::CookieHeader,session);
+    }
+    QString tem;
+    QNetworkAccessManager manger;
+    this->reply = manger.get(this->request);
+    connect(reply, &QNetworkReply::finished, [=](){QString temp(reply->readAll()); tem = temp;});
+    reply->deleteLater();
+    return tem;
+}
+
+QString HttpGet::httpGet(const QNetworkRequest & Request)
+{
+    QString tem;
+    QNetworkAccessManager manger;
+    this->reply = manger.get(Request);
+    connect(reply, &QNetworkReply::finished, [=](){QString temp(reply->readAll()); tem = temp;});
+    reply->deleteLater();
+    return tem;
+}
+
+void HttpGet::startGet()
+{
+    qDebug() << "startGet()";
+    QNetworkAccessManager manger;
+    this->reply = manger.get(this->request);
+    connect(reply, &QNetworkReply::finished, [=](){/*QString temp(reply->readAll()); tem = std::move(temp);*/emit(GetBack(reply->readAll()));});
+    reply->deleteLater();
+}
 

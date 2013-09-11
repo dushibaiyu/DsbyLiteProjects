@@ -4,28 +4,25 @@
 #include <QtCore>
 #include <QtNetwork>
 
-
 class HttpGet : public  QObject
 {
     Q_OBJECT
 public:
-    HttpGet(Qobject * parent = 0);
-    HttpGet(const QString & url,QString & session = "",Qobject * parent = 0);
-  //  void setUrl(const QString & url);
+    HttpGet(QObject * parent = 0);
+    HttpGet(const QString & url, QString session = "", QObject *parent = 0);
     void setUrl(const QUrl & url);
     void setSession(QString & session);
     void setUserAgent(const QString & userAgent);
     QString httpGet();
-    QString httpGet(const QUrl & url,QString & session = "");
-    QString httpGet(const QNetworkReply & Reply);
+    QString httpGet(const QUrl & url,QString  session = "");
+    QString httpGet(const QNetworkRequest & Request);
     void startGet();
-    ~httpGet();
+    ~HttpGet();
 Q_SIGNALS:
-    void GetBack(QString & back);
+    void GetBack(const QString & back);
 private:
-    QNetworkAccessManager * manger;
+    QNetworkRequest request;
     QNetworkReply * reply;
-    QNetworkRequest * request;
 };
 
 #endif // HTTPGET_H
