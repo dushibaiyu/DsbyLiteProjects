@@ -18,11 +18,14 @@ public:
     QString httpGet(const QNetworkRequest & Request);
     void startGet();
     ~HttpGet();
+public slots:
+    void getFinished();
 Q_SIGNALS:
     void GetBack(const QString & back);
 private:
     QNetworkRequest request;
     QNetworkReply * reply;
+    QString * data;
 };
 
 #endif // HTTPGET_H

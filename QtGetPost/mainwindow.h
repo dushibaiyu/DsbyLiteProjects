@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "httpget.h"
+#include <QtNetwork>
 
 namespace Ui {
 class MainWindow;
@@ -18,11 +18,12 @@ public:
 
 public Q_SLOTS:
     void OnbutClink();
-    void butclink();
-    void Settext(const QString &text);
+    void OnPostClink();
+    void Settext();
 private:
+    QNetworkAccessManager manager;
     Ui::MainWindow *ui;
-    HttpGet http;
+    QNetworkReply * reply;
 };
 
 #endif // MAINWINDOW_H

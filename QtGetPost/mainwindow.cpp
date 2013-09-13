@@ -7,8 +7,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     connect(ui->pushButton,SIGNAL(clicked()),this,SLOT(OnbutClink()));
-    connect(ui->pushButton_2,SIGNAL(clicked()),this,SLOT(butclink()));
-    connect(&http,SIGNAL(GetBack(QString)),this,SLOT(Settext(QString)));
+    connect(ui->Post,SIGNAL(clicked()),this,SLOT(OnPostClink()));
 }
 
 MainWindow::~MainWindow()
@@ -19,19 +18,27 @@ MainWindow::~MainWindow()
 void MainWindow::OnbutClink()
 {
     qDebug()<< "Onbutclink()  " <<  this->ui->lineEdit->text();
-    HttpGet http1(this->ui->lineEdit->text());
-    this->ui->textEdit->setText(http1.httpGet());
+
+    QNetworkRequest header(this->ui->lineEdit->text());
+    reply =  manager.get(header);
+    connect(reply,&QNetworkReply::finished,this,&MainWindow::Settext);
 }
 
-void MainWindow::Settext(const QString &text)
+void MainWindow::Settext()
 {
-    qDebug()<< "Settext() ";
-    this->ui->textEdit->setText(text);
+
+    this->ui->textEdit->setText(reply->readAll());
+    reply->deleteLater();
+    reply = nullptr;
 }
 
-void MainWindow::butclink()
+void MainWindow::OnPostClink()
 {
-    qDebug()<< "butclink() " <<  this->ui->lineEdit->text();
-    http.setUrl(this->ui->lineEdit->text());
-    http.startGet();
+    QNetworkRequest header(this->ui->lineEdit->text());
+    QByteArray BArry;
+    BArry.append(this->ui->postData->toPlainText());
+    reply =  manager.post(header,BArry);
+    qDebug() << "Post data :" << BArry;
+    //post数据没有截取到。
+    connect(reply,&QNetworkReply::finished,this,&MainWindow::Settext);
 }

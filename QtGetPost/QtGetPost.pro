@@ -13,10 +13,8 @@ TEMPLATE = app
 CONFIG += C++11
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
-    httpget.cpp
+        mainwindow.cpp
 
-HEADERS  += mainwindow.h \
-    httpget.h
+HEADERS  += mainwindow.h
 
 FORMS    += mainwindow.ui

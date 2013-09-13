@@ -2,6 +2,7 @@
 
 HttpGet::HttpGet(QObject *parent) : QObject(parent)
 {
+    connect(reply, &QNetworkReply::finished, this, &httpGet::getFinished);
 }
 
 HttpGet::HttpGet(const QString & url,QString  session,QObject * parent): QObject(parent)
@@ -11,6 +12,7 @@ HttpGet::HttpGet(const QString & url,QString  session,QObject * parent): QObject
     {
         this->request.setHeader(QNetworkRequest::CookieHeader,session);
     }
+    connect(reply, &QNetworkReply::finished, this, &httpGet::getFinished);
 }
 
 HttpGet::~HttpGet()
@@ -38,7 +40,9 @@ QString HttpGet::httpGet()
     QString tem;
     QNetworkAccessManager manger;
     this->reply = manger.get(this->request);
-    connect(reply, &QNetworkReply::finished, [=](){QString temp(reply->readAll()); tem = temp;});
+
+    QString hh(reply->readAll());
+    tem = hh;
     reply->deleteLater();
     return tem;
 }
@@ -54,7 +58,10 @@ QString HttpGet::httpGet(const QUrl & url,QString  session)
     QString tem;
     QNetworkAccessManager manger;
     this->reply = manger.get(this->request);
-    connect(reply, &QNetworkReply::finished, [=](){QString temp(reply->readAll()); tem = temp;});
+//    connect(reply, &QNetworkReply::finished, [](){
+//                                                    QString hh(reply->readAll());
+//                                                    tem = hh;
+//                                                });
     reply->deleteLater();
     return tem;
 }
@@ -64,7 +71,7 @@ QString HttpGet::httpGet(const QNetworkRequest & Request)
     QString tem;
     QNetworkAccessManager manger;
     this->reply = manger.get(Request);
-    connect(reply, &QNetworkReply::finished, [=](){QString temp(reply->readAll()); tem = temp;});
+//    connect(reply, &QNetworkReply::finished, [=](){tem.append(reply->readAll());});
     reply->deleteLater();
     return tem;
 }
