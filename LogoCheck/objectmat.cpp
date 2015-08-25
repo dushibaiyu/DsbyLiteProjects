@@ -23,21 +23,23 @@ void ObjectMat::initObjImg()
 
 int ObjectMat::matchToPoint(cv::Mat & scene, std::vector<Point2f> &outPoint, cv::Mat * img_matches)
 {
-    if (scene.empty() || object_img.empty() || detector_.empty() || matcher_.empty())
-        return -1;
     outPoint.clear();
+    if (scene.empty() || object_img.empty() || detector_.empty() || matcher_.empty() || points_obj.empty() || descriptors_obj.empty())
+        return -1;
     outPoint.reserve(4);
     std::vector<cv::KeyPoint> points_scen;
     cv::Mat descriptors_scen;
     detector_->detect(scene,points_scen);
     detector_->compute(scene,points_scen,descriptors_scen);
 
+    if (points_scen.empty() || descriptors_scen.empty()) return -1;
     std::vector<cv::DMatch> matches;
     if (isDoubleCheck) {
         crossCheckMatching(descriptors_scen,matches,kun);
     } else {
         matcher_->match(descriptors_obj,descriptors_scen,matches);
     }
+    if (matches.empty()) return 0;
     vector<int> queryIdxs( matches.size() ), trainIdxs( matches.size() );
     for( size_t i = 0; i < matches.size(); i++ ) {
         queryIdxs[i] = matches[i].queryIdx;

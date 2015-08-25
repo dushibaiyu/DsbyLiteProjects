@@ -14,8 +14,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    objm.setFeature2D(cv::xfeatures2d::SURF::create(2000));
+    objm.setFeature2D(cv::xfeatures2d::SURF::create(400,4,3,false,true));
     objm.setMatcher(new cv::FlannBasedMatcher);
+//    objm.setRansacReprojThreshold(10);
 }
 
 MainWindow::~MainWindow()
@@ -59,17 +60,19 @@ void MainWindow::on_pushCheck_clicked()
     std::vector<cv::Point2f>  pont;
     objm.matchToPoint(mat,pont,&img_matches);
     qDebug() << " get point :" << tm.elapsed();
-    QPainter pain(&image);
-    QPen pen(Qt::SolidLine);
-    pen.setColor(QColor(Qt::red));
-    pen.setWidth(3);
-    pain.setPen(pen);
-    pain.drawLine(QPointF(pont[0].x,pont[0].y),QPointF(pont[1].x,pont[1].y));
-    pain.drawLine(QPointF(pont[1].x,pont[1].y),QPointF(pont[2].x,pont[2].y));
-    pain.drawLine(QPointF(pont[2].x,pont[2].y),QPointF(pont[3].x,pont[3].y));
-    pain.drawLine(QPointF(pont[3].x,pont[3].y),QPointF(pont[0].x,pont[0].y));
-    pain.end();
-    this->ui->image->setPixmap(QPixmap::fromImage(image.scaled(450,450)));
-    cv::imshow( "Good Matches & Object detection", img_matches );
+    if (pont.size() == 4) {
+        QPainter pain(&image);
+        QPen pen(Qt::SolidLine);
+        pen.setColor(QColor(Qt::red));
+        pen.setWidth(3);
+        pain.setPen(pen);
+        pain.drawLine(QPointF(pont[0].x,pont[0].y),QPointF(pont[1].x,pont[1].y));
+        pain.drawLine(QPointF(pont[1].x,pont[1].y),QPointF(pont[2].x,pont[2].y));
+        pain.drawLine(QPointF(pont[2].x,pont[2].y),QPointF(pont[3].x,pont[3].y));
+        pain.drawLine(QPointF(pont[3].x,pont[3].y),QPointF(pont[0].x,pont[0].y));
+        pain.end();
+        this->ui->image->setPixmap(QPixmap::fromImage(image.scaled(450,450)));
+        cv::imshow( "Good Matches & Object detection", img_matches );
+    }
 
 }
